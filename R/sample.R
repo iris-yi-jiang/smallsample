@@ -158,14 +158,11 @@ gen_gh <- function(n, a = 0, b = 1, g = 0, h = 0) {
 #' @export
 #'
 #' @examples
-#' gen_gk(n = 20, a = 0, b = 1, g = 2, k = -1/3)
+#' gen_gk(n = 20, a = 0, b = 1, g = 2, k = 0)
 
 gen_gk <- function(n, a = 0, b = 1, g = 0, k = 0) {
   if (n <= 0) {
     stop("number of points should be greater than 0")
-  }
-  if (a <= 0) {
-    stop("a parameter should be greater than 0")
   }
   if (b <= 0) {
     stop("b parameter should be greater than 0")
