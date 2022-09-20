@@ -113,7 +113,9 @@ gen_exp <- function(n, rate = 1) {
 #' @param a Location parameter.
 #' @param b Scale parameter.
 #' @param g Symmetry parameter. The distribution is symmetric when g=0.
-#' @param h Tail shape parameter.
+#' @param h Tail shape parameter. A measure of kurtosis or elongation in
+#'    the tails of the distribution. h>0 corresponds to distributions
+#'    that are 'longer-tailed' than the normal.
 #' @return N-vector containing the sampled points.
 #' @export
 #'
@@ -124,11 +126,11 @@ gen_gh <- function(n, a = 0, b = 1, g = 0, h = 0) {
   if (n <= 0) {
     stop("number of points should be greater than 0")
   }
-  if (b <=0) {
+  if (b <= 0) {
     stop("b parameter should be greater than 0")
   }
-  if (h <=0) {
-    stop("h parameter should be greater than 0")
+  if (h < 0) {
+    stop("h parameter should be greater than or equal to 0")
   }
   u <- gen_unif(n, l = 0, u = 1)
   z <- stats::qnorm(u, mean = 0, sd = 1)
