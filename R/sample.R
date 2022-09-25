@@ -10,7 +10,7 @@
 #' @export
 #'
 #' @examples
-#' gen_unif(n = 10, l = 2, u = 5)
+#' gen_unif(n = 35, l = 2, u = 5)
 
 gen_unif <- function(n, l = 0, u = 1) {
   if (n <= 0) {
@@ -40,7 +40,7 @@ gen_unif <- function(n, l = 0, u = 1) {
 #' @export
 #'
 #' @examples
-#' gen_norm(n = 20, mu = 2, sig = 3)
+#' gen_norm(n = 35, mu = 2, sig = 3)
 
 gen_norm <- function(n, mu = 0, sig = 1) {
   if (n <= 0) {
@@ -65,7 +65,7 @@ gen_norm <- function(n, mu = 0, sig = 1) {
 #' @export
 #'
 #' @examples
-#' gen_chisq(n = 20, df = 3)
+#' gen_chisq(n = 35, df = 3)
 
 gen_chisq <- function(n, df) {
   if (n <= 0) {
@@ -90,7 +90,7 @@ gen_chisq <- function(n, df) {
 #' @export
 #'
 #' @examples
-#' gen_exp(n = 15, rate = 1)
+#' gen_exp(n = 35, rate = 1)
 
 gen_exp <- function(n, rate = 1) {
   if (n <= 0) {
@@ -120,7 +120,7 @@ gen_exp <- function(n, rate = 1) {
 #' @export
 #'
 #' @examples
-#' gen_gh(n = 20, a = 0, b = 1, g = 0, h = 1)
+#' gen_gh(n = 35, a = 0, b = 1, g = 0, h = 1)
 
 gen_gh <- function(n, a = 0, b = 1, g = 0, h = 0) {
   if (n <= 0) {
@@ -160,7 +160,7 @@ gen_gh <- function(n, a = 0, b = 1, g = 0, h = 0) {
 #' @export
 #'
 #' @examples
-#' gen_gk(n = 20, a = 0, b = 1, g = 2, k = 0)
+#' gen_gk(n = 35, a = 0, b = 1, g = 2, k = 0)
 
 gen_gk <- function(n, a = 0, b = 1, g = 0, k = 0) {
   if (n <= 0) {
@@ -179,3 +179,11 @@ gen_gk <- function(n, a = 0, b = 1, g = 0, k = 0) {
   x <- a + b * gz * kz * z
   return(x)
 }
+
+plot_hist <- function(x) {
+  ggplot2::ggplot(data = tibble::tibble(x), aes(x = x)) +
+        geom_histogram(aes(y = ..density..)) +
+        geom_density()
+}
+
+
